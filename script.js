@@ -26,6 +26,14 @@ function displayBoooks() {
     pages.textContent = book.pages;
 
     const readButton = document.createElement('button');
+    if (book.readIt === true) readButton.textContent = 'Not Read It';
+    else readButton.textContent = 'Read It';
+    readButton.addEventListener('click', () => {
+      // eslint-disable-next-line no-param-reassign
+      book.readIt = !book.readIt;
+      container.innerHTML = '';
+      displayBoooks();
+    });
 
     const removeButton = document.createElement('button');
     removeButton.textContent = 'Remove';
