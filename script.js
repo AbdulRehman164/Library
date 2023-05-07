@@ -87,6 +87,7 @@ function addBookToLibrary() {
       displayBooks();
       blurDiv.classList.remove('blur');
       form.style.display = 'none';
+      form.reset();
     }
   });
 }
