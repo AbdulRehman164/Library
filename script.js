@@ -26,16 +26,25 @@ function displayBooks() {
 
     const title = document.createElement('h1');
     title.textContent = book.title;
+    title.classList.add('cardTitle');
 
     const author = document.createElement('p');
     author.textContent = book.author;
+    author.classList.add('cardauthor');
 
     const pages = document.createElement('p');
     pages.textContent = book.pages;
+    pages.classList.add('cardPages');
 
     const readButton = document.createElement('button');
-    if (book.readIt === true) readButton.textContent = 'Not Read It';
-    else readButton.textContent = 'Read It';
+    readButton.classList.add('cardReadButton');
+    if (book.readIt === true) {
+      readButton.textContent = 'Not Read';
+      readButton.style.backgroundColor = 'lightcoral';
+    } else {
+      readButton.textContent = 'Read';
+      readButton.style.backgroundColor = 'lightgreen';
+    }
     readButton.addEventListener('click', () => {
       // eslint-disable-next-line no-param-reassign
       book.readIt = !book.readIt;
@@ -65,12 +74,22 @@ function addBookToLibrary() {
   submitButton.addEventListener('click', (event) => {
     event.preventDefault();
     myLibrary.push(
-      new Book(title.value, author.value, pages.value, readIt.checked)
+      new Book(
+        title.value,
+        author.value,
+        `${pages.value} pages`,
+        readIt.checked
+      )
     );
     displayBooks();
     blurDiv.classList.remove('blur');
     form.style.display = 'none';
   });
 }
+
+myLibrary.push(
+  new Book('A Study In Scarlet', 'Conan Doyle', '300 pages', true)
+);
+displayBooks();
 
 addBookToLibrary();
