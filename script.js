@@ -1,4 +1,15 @@
 let myLibrary = [];
+const addBookButton = document.querySelector('.addBook');
+const form = document.querySelector('.bookForm');
+const blurDiv = document.querySelector('.divForBlur');
+addBookButton.addEventListener('click', () => {
+  form.style.display = 'flex';
+  blurDiv.classList.add('blur');
+});
+blurDiv.addEventListener('click', () => {
+  form.style.display = 'none';
+  blurDiv.classList.remove('blur');
+});
 
 function Book(title, author, pages, readIt) {
   this.title = title;
@@ -57,15 +68,9 @@ function addBookToLibrary() {
       new Book(title.value, author.value, pages.value, readIt.checked)
     );
     displayBooks();
+    blurDiv.classList.remove('blur');
+    form.style.display = 'none';
   });
 }
 
 addBookToLibrary();
-
-const addBookButton = document.querySelector('.addBook');
-const form = document.querySelector('.bookForm');
-const blurDiv = document.querySelector('.divForBlur');
-addBookButton.addEventListener('click', () => {
-  form.style.display = 'flex';
-  blurDiv.classList.add('blur');
-});
