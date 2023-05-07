@@ -72,18 +72,22 @@ function addBookToLibrary() {
   const pages = document.querySelector('#pages');
   const readIt = document.querySelector('#readIt');
   submitButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    myLibrary.push(
-      new Book(
-        title.value,
-        author.value,
-        `${pages.value} pages`,
-        readIt.checked
-      )
-    );
-    displayBooks();
-    blurDiv.classList.remove('blur');
-    form.style.display = 'none';
+    const isValid = form.checkValidity();
+    if (!isValid) form.reportValidity();
+    else {
+      event.preventDefault();
+      myLibrary.push(
+        new Book(
+          title.value,
+          author.value,
+          `${pages.value} pages`,
+          readIt.checked
+        )
+      );
+      displayBooks();
+      blurDiv.classList.remove('blur');
+      form.style.display = 'none';
+    }
   });
 }
 
