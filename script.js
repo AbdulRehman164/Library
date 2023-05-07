@@ -7,12 +7,9 @@ function Book(title, author, pages, readIt) {
   this.readIt = readIt;
 }
 
-myLibrary.push(new Book('A study in Scarlet', 'Conan Doyle', '256', true));
-myLibrary.push(new Book('A sign of four', 'Conan Doyle', '280', false));
-myLibrary.push(new Book('Hounds of Baskerville', 'Conan Doyle', '266', true));
-
-function displayBoooks() {
+function displayBooks() {
   const container = document.querySelector('.container');
+  container.innerHTML = '';
   myLibrary.forEach((book) => {
     const section = document.createElement('section');
 
@@ -31,8 +28,7 @@ function displayBoooks() {
     readButton.addEventListener('click', () => {
       // eslint-disable-next-line no-param-reassign
       book.readIt = !book.readIt;
-      container.innerHTML = '';
-      displayBoooks();
+      displayBooks();
     });
 
     const removeButton = document.createElement('button');
@@ -49,4 +45,19 @@ function displayBoooks() {
   });
 }
 
-displayBoooks();
+function addBookToLibrary() {
+  const submitButton = document.querySelector('.submit');
+  const title = document.querySelector('#title');
+  const author = document.querySelector('#author');
+  const pages = document.querySelector('#pages');
+  const readIt = document.querySelector('#readIt');
+  submitButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    myLibrary.push(
+      new Book(title.value, author.value, pages.value, readIt.checked)
+    );
+    displayBooks();
+  });
+}
+
+addBookToLibrary();
