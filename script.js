@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, readIt) {
   this.title = title;
@@ -29,6 +29,11 @@ function displayBoooks() {
 
     const removeButton = document.createElement('button');
     removeButton.textContent = 'Remove';
+
+    removeButton.addEventListener('click', () => {
+      section.remove();
+      myLibrary = myLibrary.filter((card) => card !== book);
+    });
 
     section.append(title, author, pages, readButton, removeButton);
 
