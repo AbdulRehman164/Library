@@ -64,6 +64,8 @@ addBookToLibrary();
 
 const addBookButton = document.querySelector('.addBook');
 const form = document.querySelector('.bookForm');
+const blurDiv = document.querySelector('.divForBlur');
 addBookButton.addEventListener('click', () => {
   form.style.display = 'flex';
+  blurDiv.classList.add('blur');
 });
