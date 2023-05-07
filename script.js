@@ -92,9 +92,4 @@ function addBookToLibrary() {
   });
 }
 
-myLibrary.push(
-  new Book('A Study In Scarlet', 'Conan Doyle', '300 pages', true)
-);
-displayBooks();
-
 addBookToLibrary();
