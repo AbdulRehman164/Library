@@ -11,13 +11,14 @@ blurDiv.addEventListener('click', () => {
   blurDiv.classList.remove('blur');
 });
 
-function Book(title, author, pages, readIt) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readIt = readIt;
+class Book {
+  constructor(title, author, pages, readIt) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readIt = readIt;
+  }
 }
-
 function displayBooks() {
   const container = document.querySelector('.container');
   container.innerHTML = '';

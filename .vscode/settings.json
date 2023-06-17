@@ -1,10 +1,9 @@
 {
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true,
-    },
-    "eslint.validate": [
-        "javascript"
-    ],
-    "editor.formatOnSave": true,
-    "prettier.singleQuote": true
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"],
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+  "liveServer.settings.port": 5502
 }
