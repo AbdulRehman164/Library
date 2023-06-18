@@ -1,16 +1,4 @@
 let myLibrary = [];
-const addBookButton = document.querySelector('.addBook');
-const form = document.querySelector('.bookForm');
-const blurDiv = document.querySelector('.divForBlur');
-addBookButton.addEventListener('click', () => {
-  form.style.display = 'flex';
-  blurDiv.classList.add('blur');
-});
-blurDiv.addEventListener('click', () => {
-  form.style.display = 'none';
-  blurDiv.classList.remove('blur');
-});
-
 class Book {
   constructor(title, author, pages, readIt) {
     this.title = title;
@@ -68,6 +56,24 @@ class Book {
 }
 
 function addBookToLibrary() {
+  const addBookButton = document.querySelector('.addBook');
+  const form = document.querySelector('.bookForm');
+  const blurDiv = document.querySelector('.divForBlur');
+  addBookButton.addEventListener('click', () => {
+    form.style.display = 'flex';
+    blurDiv.classList.add('blur');
+  });
+  blurDiv.addEventListener('click', () => {
+    form.style.display = 'none';
+    blurDiv.classList.remove('blur');
+  });
+
+  function removeForm() {
+    blurDiv.classList.remove('blur');
+    form.style.display = 'none';
+    form.reset();
+  }
+
   const submitButton = document.querySelector('.submit');
   const title = document.querySelector('#title');
   const author = document.querySelector('#author');
@@ -87,9 +93,7 @@ function addBookToLibrary() {
         )
       );
       Book.displayBooks();
-      blurDiv.classList.remove('blur');
-      form.style.display = 'none';
-      form.reset();
+      removeForm();
     }
   });
 }
